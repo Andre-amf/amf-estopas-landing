@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Cores exatas do logo AMF:
+   Vermelho: #E51E23  — marca AMF + "ESTOPAS E PANOS PARA LIMPEZA"
+   Verde:    #2B7A3C  — "Fundada em 1990"
+*/
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #FFFFFF;
+  color: #2B2B2B;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar — verde da logo */
+::-webkit-scrollbar        { width: 5px; }
+::-webkit-scrollbar-track  { background: #F6F4F4; }
+::-webkit-scrollbar-thumb  { background: #2B7A3C; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #1A5C2D; }
+
+/* Slider thumb — verde da logo */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #2B7A3C; cursor: pointer;
+  border: 2px solid #3A9B50;
+  box-shadow: 0 0 6px rgba(43,122,60,0.4);
+}
+input[type='range']::-moz-range-thumb {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #2B7A3C; cursor: pointer;
+  border: 2px solid #3A9B50;
+}
+input[type='range'] {
+  -webkit-appearance: none;
+  height: 4px; background: #E8E8E8;
+  border-radius: 2px; outline: none;
+}
+
+/* Seleção de texto — verde da logo */
+::selection { background: rgba(43,122,60,0.2); color: #2B2B2B; }
