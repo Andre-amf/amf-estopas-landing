@@ -1,5 +1,6 @@
-import Image from 'next/image'
-import { Phone, MessageCircle, Star } from 'lucide-react'
+import { Phone, MessageCircle, Star, Clock } from 'lucide-react'
+
+const WA = 'https://wa.me/5531986239665?text=Olá!%20Gostaria%20de%20falar%20com%20um%20consultor%20da%20AMF%20Estopas.'
 
 export default function CartaoVendedor() {
   return (
@@ -15,18 +16,18 @@ export default function CartaoVendedor() {
         </div>
 
         <div className="bg-white border border-amf-border rounded-3xl p-8 text-center shadow-sm">
-          <div className="relative w-24 h-24 mx-auto mb-5">
-            <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80"
-              alt="Consultor AMF Estopas" fill className="object-cover rounded-full" />
-            {/* Online indicator verde */}
+
+          {/* Logo AMF no lugar da foto genérica */}
+          <div className="relative w-28 h-28 mx-auto mb-5 bg-amf-light rounded-full flex items-center justify-center border-2 border-amf-border">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo-amf.png" alt="AMF Estopas" className="w-20 h-20 object-contain" />
             <div className="absolute -bottom-1 -right-1 w-7 h-7 bg-amf-green rounded-full border-2 border-white flex items-center justify-center">
               <span className="w-2.5 h-2.5 bg-white rounded-full" />
             </div>
           </div>
 
-          <h3 className="text-amf-navy font-bold text-xl mb-1">Consultor AMF Estopas</h3>
-          <p className="text-amf-muted text-sm mb-1">Especialista em materiais de limpeza industrial</p>
-          {/* toque vermelho */}
+          <h3 className="text-amf-navy font-bold text-xl mb-1">Equipe AMF Estopas</h3>
+          <p className="text-amf-muted text-sm mb-1">Especialistas em materiais de limpeza industrial</p>
           <div className="h-0.5 w-12 bg-amf-red rounded-full mx-auto mb-5" />
 
           <div className="flex justify-center gap-6 mb-7 text-sm">
@@ -40,10 +41,8 @@ export default function CartaoVendedor() {
             <span className="text-amf-muted">+30 anos</span>
           </div>
 
-          {/* Botões verdes */}
           <div className="space-y-3">
-            <a href="https://wa.me/5531986239665?text=Olá!%20Gostaria%20de%20falar%20com%20um%20consultor%20da%20AMF%20Estopas."
-              target="_blank" rel="noopener noreferrer"
+            <a href={WA} target="_blank" rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full bg-amf-green hover:bg-amf-green-dark text-white font-semibold py-3.5 rounded-2xl transition-all hover:scale-105 shadow-md shadow-green-200">
               <MessageCircle className="w-5 h-5" /> WhatsApp
             </a>
@@ -53,7 +52,10 @@ export default function CartaoVendedor() {
             </a>
           </div>
 
-          <p className="text-amf-muted text-xs mt-5">Atendimento: Seg–Sex 8h–18h · Sáb 8h–12h</p>
+          <div className="flex items-center justify-center gap-1.5 mt-5 text-amf-muted text-xs">
+            <Clock className="w-3.5 h-3.5" />
+            <span>Seg–Sex 8h–18h · Sáb 8h–12h</span>
+          </div>
         </div>
       </div>
     </section>
