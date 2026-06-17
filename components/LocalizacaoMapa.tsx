@@ -11,7 +11,7 @@ const infos = [
 
 export default function LocalizacaoMapa() {
   return (
-    <section className="py-20 bg-white px-6">
+    <section id="localizacao" className="py-20 bg-white px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-amf-red text-xs tracking-widest uppercase font-medium mb-3">Onde estamos</p>

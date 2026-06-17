@@ -16,7 +16,7 @@ export default function SobreEmpresa() {
   const [expandido, setExpandido] = useState(false)
 
   return (
-    <section className="py-20 bg-white px-6">
+    <section id="sobre" className="py-20 bg-white px-6">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
