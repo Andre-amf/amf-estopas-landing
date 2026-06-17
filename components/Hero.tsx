@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight, Star, BadgeCheck, Factory, MessageCircle } f
 
 const slides = [
   { url: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80', alt: 'Fábrica industrial AMF Estopas' },
-  { url: 'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80', alt: 'Produção industrial de estopas' },
+  { url: 'https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=1920&q=80', alt: 'Produção industrial de estopas' },
   { url: 'https://images.unsplash.com/photo-1565793979706-d73e9a28a78b?w=1920&q=80', alt: 'Linha de produção têxtil' },
   { url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80', alt: 'Materiais de limpeza industrial' },
   { url: 'https://images.unsplash.com/photo-1527515637462-cff94aca0e83?w=1920&q=80', alt: 'Panos industriais de alta qualidade' },
