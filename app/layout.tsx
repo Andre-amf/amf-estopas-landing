@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'AMF Estopas | Fabricante de Estopas e Panos Industriais em BH',
+  title: 'AMF Estopas | Estopa Industrial e Panos para Limpeza',
   description:
-    'AMF Resíduos Têxteis LTDA — fabricante direto de estopas, panos de limpeza, flanelas e tapetes industriais desde 1990. Belo Horizonte/MG. Entrega nacional. Solicite orçamento.',
-  keywords: 'estopa industrial, panos de limpeza industrial, flanela industrial, tapete industrial, fabricante estopa BH, estopa algodão belo horizonte',
+    'AMF Resíduos Têxteis LTDA — fabricante direto de estopa industrial, panos de limpeza e algodão para enchimento desde 1990. Atacado e varejo. Pronta entrega para todo o Brasil. Solicite orçamento.',
+  keywords: 'estopa industrial, panos de limpeza industrial, algodão para enchimento, flanela industrial, tapete industrial, fabricante estopa BH, atacado estopa belo horizonte',
   openGraph: {
-    title: 'AMF Estopas | Fabricante desde 1990',
-    description: 'Fabricante direto de estopas e materiais de limpeza industrial. +500 clientes. Entrega nacional.',
+    title: 'AMF Estopas | Estopa Industrial e Panos para Limpeza',
+    description: 'Fabricante direto de estopa industrial, panos de limpeza e algodão para enchimento. Atacado e varejo. Pronta entrega para todo o Brasil.',
     url: 'https://www.amfestopas.com.br',
     siteName: 'AMF Estopas',
     locale: 'pt_BR',

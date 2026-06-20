@@ -52,12 +52,12 @@ export default function Hero() {
         </div>
 
         <p className="text-white/60 text-xs tracking-[0.25em] uppercase mb-4 animate-fade-up" style={{ animationDelay: '0.15s' }}>
-          Estopas · Panos · Flanelas · Tapetes Industriais
+          Estopa Industrial · Panos de Limpeza · Algodão para Enchimento
         </p>
 
         <p className="text-white/85 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-up" style={{ animationDelay: '0.2s' }}>
           Fabricante direto com <span className="text-amf-green font-semibold">+32 produtos</span> para limpeza industrial.
-          Qualidade garantida desde 1990 · Entrega para todo o Brasil.
+          Atacado e varejo · Pronta entrega para todo o Brasil.
         </p>
 
         {/* CTAs */}
