@@ -48,9 +48,33 @@ export default function FormularioInteresse() {
       mensagem: mensagem.trim() || undefined,
       empresa: EMPRESA,
     };
+    // Origem do lead (UTMs / gclid) para saber qual campanha converteu
+    const qs = new URLSearchParams(window.location.search);
+    const origem: Record<string, string> = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach((k) => {
+      const v = qs.get(k);
+      if (v) origem[k] = v;
+    });
+    origem.pagina = window.location.href;
+
     try {
-      const { error } = await supabase.from('leads').insert([lead]);
-      if (error) throw new Error(error.message);
+      // Grava no Kommo e no Supabase em paralelo: basta um dar certo para o lead não se perder
+      const [kommo, banco] = await Promise.allSettled([
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...lead, origem }),
+        }).then(async (r) => { if (!r.ok) throw new Error(`Kommo ${r.status}`); return r.json(); }),
+        supabase.from('leads').insert([lead]).then(({ error }) => { if (error) throw new Error(error.message); }),
+      ]);
+      if (kommo.status === 'rejected') console.error('[AMF] Kommo:', kommo.reason);
+      if (banco.status === 'rejected') console.error('[AMF] Supabase:', banco.reason);
+      if (kommo.status === 'rejected' && banco.status === 'rejected') throw new Error('Nenhum destino salvou o lead');
+
+      // Evento para GTM / Google Ads / Meta (conversão)
+      (window as any).dataLayer = (window as any).dataLayer || [];
+      (window as any).dataLayer.push({ event: 'lead_formulario', prazo_compra: prazo });
+
       setStatus('success');
       setTimeout(() => window.open(buildWhatsAppURL(lead), '_blank'), 1200);
     } catch (err: any) {
