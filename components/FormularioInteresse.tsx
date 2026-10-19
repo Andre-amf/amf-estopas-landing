@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Check, ChevronRight, MessageCircle, AlertCircle, Loader2 } from 'lucide-react';
-import { supabase, type Lead } from '@/lib/supabase';
 
 const WA_NUMBER = '5531986239665';
 const EMPRESA   = 'AMF Estopas';
@@ -17,13 +16,29 @@ const PRAZO_OPTIONS = [
 
 type Status = 'idle' | 'loading' | 'success' | 'error';
 
-function buildWhatsAppURL(lead: Lead): string {
+type LeadData = { nome: string; telefone: string; email?: string; prazo_compra: string; mensagem?: string };
+
+function buildWhatsAppURL(lead: LeadData): string {
   const msg = [
     `Olá! Me chamo *${lead.nome}* e tenho interesse nos produtos da *${EMPRESA}*.`,
     `📦 Prazo: ${lead.prazo_compra}`,
     lead.mensagem ? `📝 Obs: ${lead.mensagem}` : '',
   ].filter(Boolean).join('\n');
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+function getUtmParams() {
+  if (typeof window === 'undefined') return {};
+  const p = new URLSearchParams(window.location.search);
+  return {
+    utm_source:   p.get('utm_source')   || '',
+    utm_medium:   p.get('utm_medium')   || '',
+    utm_campaign: p.get('utm_campaign') || '',
+    gclid:        p.get('gclid')        || '',
+    fbclid:       p.get('fbclid')       || '',
+    pagina:       window.location.href,
+    referrer:     document.referrer,
+  };
 }
 
 export default function FormularioInteresse() {
@@ -41,16 +56,19 @@ export default function FormularioInteresse() {
   async function handleSubmit() {
     setStatus('loading');
     setErrorMsg('');
-    const lead: Lead = {
+    const lead: LeadData = {
       nome: nome.trim(), telefone: telefone.trim(),
       email: email.trim() || undefined,
       prazo_compra: prazo,
       mensagem: mensagem.trim() || undefined,
-      empresa: EMPRESA,
     };
     try {
-      const { error } = await supabase.from('leads').insert([lead]);
-      if (error) throw new Error(error.message);
+      const res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...lead, empresa: EMPRESA, ...getUtmParams() }),
+      });
+      if (!res.ok) throw new Error(await res.text());
       setStatus('success');
       setTimeout(() => window.open(buildWhatsAppURL(lead), '_blank'), 1200);
     } catch (err: any) {
@@ -81,7 +99,7 @@ export default function FormularioInteresse() {
             Nossa equipe vai te chamar no WhatsApp em breve.<br />Abrindo o WhatsApp agora…
           </p>
           <a
-            href={buildWhatsAppURL({ nome, telefone, email, prazo_compra: prazo, mensagem, empresa: EMPRESA })}
+            href={buildWhatsAppURL({ nome, telefone, email, prazo_compra: prazo, mensagem })}
             target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-green-600 hover:bg-green-500 text-white font-semibold transition-all"
           >
