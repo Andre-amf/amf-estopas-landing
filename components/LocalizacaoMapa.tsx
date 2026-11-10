@@ -2,7 +2,7 @@ import { MapPin, Phone, Globe, Clock, Truck, Gift } from 'lucide-react'
 
 const infos = [
   { icon: MapPin, titulo: 'Fábrica',           texto: 'Rua Rita Ferreira, 40 – Jd Montanhes\nBelo Horizonte – MG · CEP 30.750-190' },
-  { icon: Phone,  titulo: 'Comercial',         texto: '(31) 9.8623-9665\n(31) 3411-3509' },
+  { icon: Phone,  titulo: 'Comercial',         texto: '(31) 3411-3509\nWhatsApp e telefone' },
   { icon: Globe,  titulo: 'Loja Online',       texto: 'loja.amfestopas.com.br\nwww.amfestopas.com.br' },
   { icon: Clock,  titulo: 'Atendimento',       texto: 'Seg a Sex: 8h – 18h\nSábado: 8h – 12h' },
   { icon: Truck,  titulo: 'Prazo de entrega',  texto: 'BH: 1 dia útil\nDemais regiões: 3 a 7 dias' },

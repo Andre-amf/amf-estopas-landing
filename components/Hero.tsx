@@ -63,7 +63,7 @@ export default function Hero() {
         {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up" style={{ animationDelay: '0.3s' }}>
           <a
-            href="https://wa.me/5531986239665?text=Olá!%20Vim%20pelo%20site%20da%20AMF%20Estopas%20e%20gostaria%20de%20um%20orçamento."
+            href="https://wa.me/553134113509?text=Olá!%20Vim%20pelo%20site%20da%20AMF%20Estopas%20e%20gostaria%20de%20um%20orçamento."
             target="_blank" rel="noopener noreferrer"
             className="flex items-center justify-center gap-2 bg-amf-green hover:bg-amf-green-dark text-white font-semibold py-4 px-8 rounded-2xl transition-all duration-300 hover:scale-105 shadow-lg shadow-green-900/40"
           >

@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="flex gap-3">
               {[
                 { href: 'https://www.instagram.com/amfestopas', Icon: Instagram,     label: 'Instagram', hover: 'hover:border-pink-400/50'   },
-                { href: 'https://wa.me/5531986239665',           Icon: MessageCircle, label: 'WhatsApp',  hover: 'hover:border-amf-green/60' },
+                { href: 'https://wa.me/553134113509',           Icon: MessageCircle, label: 'WhatsApp',  hover: 'hover:border-amf-green/60' },
                 { href: 'mailto:vendas@amfestopas.com.br',       Icon: Mail,          label: 'E-mail',    hover: 'hover:border-amf-red/50'   },
               ].map(({ href, Icon, label, hover }) => (
                 <a key={href} href={href} target="_blank" rel="noopener noreferrer" title={label}
@@ -61,9 +61,9 @@ export default function Footer() {
           <div>
             <p className="text-amf-red text-xs uppercase tracking-widest font-semibold mb-4">Contato</p>
             <div className="space-y-3 text-sm">
-              <a href="https://wa.me/5531986239665" target="_blank" rel="noopener noreferrer"
+              <a href="https://wa.me/553134113509" target="_blank" rel="noopener noreferrer"
                 className="flex items-center gap-2 text-white/50 hover:text-amf-green transition-colors">
-                <MessageCircle className="w-4 h-4 text-amf-green" /> (31) 9.8623-9665
+                <MessageCircle className="w-4 h-4 text-amf-green" /> (31) 3411-3509
               </a>
               <a href="tel:+553134113509"
                 className="flex items-center gap-2 text-white/50 hover:text-white transition-colors">
@@ -76,7 +76,7 @@ export default function Footer() {
               <p className="text-white/25 text-xs pt-2">Seg–Sex: 8h–18h · Sáb: 8h–12h</p>
             </div>
 
-            <a href="https://wa.me/5531986239665?text=Olá!%20Vim%20pelo%20site%20da%20AMF%20Estopas%20e%20gostaria%20de%20um%20orçamento."
+            <a href="https://wa.me/553134113509?text=Olá!%20Vim%20pelo%20site%20da%20AMF%20Estopas%20e%20gostaria%20de%20um%20orçamento."
               target="_blank" rel="noopener noreferrer"
               className="mt-6 flex items-center justify-center gap-2 bg-amf-green hover:bg-amf-green-dark text-white text-sm font-semibold py-3 px-5 rounded-xl transition-all shadow-lg shadow-green-900/30">
               <MessageCircle className="w-4 h-4" /> Falar no WhatsApp

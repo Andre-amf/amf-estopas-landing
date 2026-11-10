@@ -25,7 +25,7 @@ export default function BotaoFlutuante() {
         <p className="text-amf-red text-xs font-semibold">Fabricante direto · Melhor preço</p>
         <p className="text-amf-muted text-xs mb-2">Resposta em minutos</p>
         {/* botão verde para induzir clique */}
-        <a href="https://wa.me/5531986239665?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento."
+        <a href="https://wa.me/553134113509?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20orçamento."
           target="_blank" rel="noopener noreferrer"
           className="flex items-center gap-2 bg-amf-green hover:bg-amf-green-dark text-white text-sm font-semibold px-4 py-2 rounded-xl transition-all shadow-md shadow-green-200">
           <MessageCircle className="w-4 h-4" /> Falar agora

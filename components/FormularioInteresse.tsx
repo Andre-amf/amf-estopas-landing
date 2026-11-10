@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Check, ChevronRight, MessageCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { supabase, type Lead } from '@/lib/supabase';
 
-const WA_NUMBER = '5531986239665';
+const WA_NUMBER = '553134113509';
 const EMPRESA   = 'AMF Estopas';
 
 const PRAZO_OPTIONS = [

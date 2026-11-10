@@ -117,7 +117,7 @@ export default function SimuladorOrcamento() {
           </div>
 
           {/* CTA verde */}
-          <a href={`https://wa.me/5531986239665?text=${msg}`} target="_blank" rel="noopener noreferrer"
+          <a href={`https://wa.me/553134113509?text=${msg}`} target="_blank" rel="noopener noreferrer"
             className="mt-6 flex items-center justify-center gap-2 w-full bg-amf-green hover:bg-amf-green-dark text-white font-semibold py-4 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-green-200">
             <MessageCircle className="w-5 h-5" /> Confirmar orçamento no WhatsApp
           </a>

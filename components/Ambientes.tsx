@@ -48,7 +48,7 @@ const produtos = [
   { nome: 'Guardanapos Sintéticos',            tagline: 'Eficiência na limpeza com responsabilidade ambiental.',               img: '/produtos/133.png', cat: 'Outros'   },
 ]
 
-const WA = 'https://wa.me/5531986239665?text=Olá!%20Tenho%20interesse%20nos%20produtos%20da%20AMF%20Estopas.%20Pode%20me%20enviar%20um%20orçamento%3F'
+const WA = 'https://wa.me/553134113509?text=Olá!%20Tenho%20interesse%20nos%20produtos%20da%20AMF%20Estopas.%20Pode%20me%20enviar%20um%20orçamento%3F'
 
 export default function Ambientes() {
   const [catAtiva, setCatAtiva] = useState('Todos')

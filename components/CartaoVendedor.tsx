@@ -1,6 +1,6 @@
 import { Phone, MessageCircle, Star, Clock } from 'lucide-react'
 
-const WA = 'https://wa.me/5531986239665?text=Olá!%20Gostaria%20de%20falar%20com%20um%20consultor%20da%20AMF%20Estopas.'
+const WA = 'https://wa.me/553134113509?text=Olá!%20Gostaria%20de%20falar%20com%20um%20consultor%20da%20AMF%20Estopas.'
 
 export default function CartaoVendedor() {
   return (

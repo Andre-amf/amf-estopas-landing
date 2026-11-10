@@ -10,7 +10,7 @@ const links = [
   { label: 'Localização', href: '#localizacao'},
 ]
 
-const WA = 'https://wa.me/5531986239665?text=Olá!%20Vim%20pelo%20site%20da%20AMF%20Estopas%20e%20gostaria%20de%20um%20orçamento.'
+const WA = 'https://wa.me/553134113509?text=Olá!%20Vim%20pelo%20site%20da%20AMF%20Estopas%20e%20gostaria%20de%20um%20orçamento.'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
