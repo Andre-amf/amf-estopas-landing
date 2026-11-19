@@ -117,6 +117,7 @@ async function main() {
   const container = await apiPost(`/${USER_ID}/media`, {
     media_type: 'VIDEO',
     video_url: videoUrl,
+    is_stories: true,
   });
 
   if (container.error) {
