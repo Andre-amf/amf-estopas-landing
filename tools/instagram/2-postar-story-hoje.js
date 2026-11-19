@@ -115,13 +115,13 @@ async function main() {
   // Cria o container do Story
   console.log('\n2️⃣  Criando container do Story...');
   const container = await apiPost(`/${USER_ID}/media`, {
-    media_type: 'VIDEO',
+    media_type: 'STORIES',
     video_url: videoUrl,
-    is_stories: true,
   });
 
   if (container.error) {
     console.error('ERRO ao criar Story:', container.error.message);
+    console.error('Detalhe:', JSON.stringify(container.error));
     process.exit(1);
   }
 
