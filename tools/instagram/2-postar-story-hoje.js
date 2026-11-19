@@ -95,7 +95,7 @@ async function main() {
   // Busca a URL do vídeo do Reel
   console.log('1️⃣  Buscando URL do vídeo...');
   const reelData = await apiGet(
-    `https://graph.facebook.com/v19.0/${entrada.reel_id}?fields=id,media_type,media_url,video_url&access_token=${TOKEN}`
+    `https://graph.facebook.com/v19.0/${entrada.reel_id}?fields=id,media_type,media_url&access_token=${TOKEN}`
   );
 
   if (reelData.error) {
@@ -103,7 +103,7 @@ async function main() {
     process.exit(1);
   }
 
-  const videoUrl = reelData.video_url || reelData.media_url;
+  const videoUrl = reelData.media_url;
   if (!videoUrl) {
     console.error('ERRO: URL do vídeo não encontrada.');
     console.error('Dados retornados:', JSON.stringify(reelData, null, 2));
