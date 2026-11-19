@@ -13,11 +13,11 @@ require('dotenv').config();
 const https = require('https');
 const fs = require('fs');
 
-const TOKEN   = process.env.INSTAGRAM_ACCESS_TOKEN;
-const USER_ID = process.env.INSTAGRAM_USER_ID;
+const TOKEN   = process.env.IG_ACCESS_TOKEN || process.env.INSTAGRAM_ACCESS_TOKEN;
+const USER_ID = process.env.IG_BUSINESS_ID || process.env.INSTAGRAM_USER_ID;
 
 if (!TOKEN || !USER_ID) {
-  console.error('ERRO: INSTAGRAM_ACCESS_TOKEN ou INSTAGRAM_USER_ID não encontrado no .env');
+  console.error('ERRO: IG_ACCESS_TOKEN ou IG_BUSINESS_ID não encontrado no .env');
   console.error('Rode primeiro: node 1-listar-reels.js');
   process.exit(1);
 }

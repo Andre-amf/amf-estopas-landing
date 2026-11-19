@@ -12,10 +12,10 @@ require('dotenv').config();
 const https = require('https');
 const fs = require('fs');
 
-const TOKEN = process.env.INSTAGRAM_ACCESS_TOKEN;
+const TOKEN = process.env.IG_ACCESS_TOKEN || process.env.INSTAGRAM_ACCESS_TOKEN;
 
 if (!TOKEN) {
-  console.error('ERRO: INSTAGRAM_ACCESS_TOKEN não encontrado no .env');
+  console.error('ERRO: IG_ACCESS_TOKEN não encontrado no .env');
   process.exit(1);
 }
 
@@ -50,8 +50,8 @@ async function main() {
   const envPath = '.env';
   if (fs.existsSync(envPath)) {
     const envContent = fs.readFileSync(envPath, 'utf8');
-    if (!envContent.includes('INSTAGRAM_USER_ID')) {
-      fs.appendFileSync(envPath, `\nINSTAGRAM_USER_ID=${userId}\n`);
+    if (!envContent.includes('IG_BUSINESS_ID') && !envContent.includes('INSTAGRAM_USER_ID')) {
+      fs.appendFileSync(envPath, `\nIG_BUSINESS_ID=${userId}\n`);
       console.log('✅ INSTAGRAM_USER_ID adicionado ao .env\n');
     }
   }
