@@ -33,29 +33,12 @@ function get(url) {
 }
 
 async function main() {
-  console.log('\n📱 Buscando dados do usuário...');
-  const me = await get(
-    `https://graph.facebook.com/v19.0/me?fields=id,username&access_token=${TOKEN}`
-  );
-
-  if (me.error) {
-    console.error('ERRO na API:', me.error.message);
+  const userId = process.env.IG_BUSINESS_ID || process.env.INSTAGRAM_USER_ID;
+  if (!userId) {
+    console.error('ERRO: IG_BUSINESS_ID não encontrado no .env');
     process.exit(1);
   }
-
-  const userId = me.id;
-  console.log(`✅ Conta: @${me.username} (ID: ${userId})\n`);
-
-  // Salva o userId no .env automaticamente se não estiver lá
-  const envPath = '.env';
-  if (fs.existsSync(envPath)) {
-    const envContent = fs.readFileSync(envPath, 'utf8');
-    if (!envContent.includes('IG_BUSINESS_ID') && !envContent.includes('INSTAGRAM_USER_ID')) {
-      fs.appendFileSync(envPath, `\nIG_BUSINESS_ID=${userId}\n`);
-      console.log('✅ INSTAGRAM_USER_ID adicionado ao .env\n');
-    }
-  }
-
+  console.log(`\n✅ Conta ID: ${userId}\n`);
   console.log('🎬 Buscando Reels...\n');
   const media = await get(
     `https://graph.facebook.com/v19.0/${userId}/media?fields=id,media_type,timestamp,permalink,thumbnail_url&limit=50&access_token=${TOKEN}`
