@@ -128,6 +128,25 @@ function uploadToPublicHost(filePath) {
 
 function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
+async function regenerarSchedule() {
+  const media = await apiGet(
+    `https://graph.facebook.com/v19.0/${USER_ID}/media?fields=id,media_type,timestamp,permalink&limit=50&access_token=${TOKEN}`
+  );
+  if (media.error) throw new Error('Erro ao buscar Reels: ' + media.error.message);
+  const reels = media.data.filter(m => m.media_type === 'VIDEO' || m.media_type === 'REEL');
+  if (reels.length === 0) throw new Error('Nenhum Reel encontrado na conta.');
+  const schedule = [];
+  const base = new Date();
+  for (let d = 0; d < 30; d++) {
+    const data = new Date(base);
+    data.setDate(base.getDate() + d);
+    const dateStr = data.toISOString().split('T')[0];
+    const reel = reels[d % reels.length];
+    schedule.push({ date: dateStr, reel_id: reel.id, reel_url: reel.permalink, hora: '09:00', ativo: true });
+  }
+  return schedule;
+}
+
 async function aguardarProcessamento(containerId, tentativas = 12) {
   for (let i = 0; i < tentativas; i++) {
     await sleep(5000);
@@ -146,12 +165,19 @@ async function aguardarProcessamento(containerId, tentativas = 12) {
 
 async function main() {
   const hoje     = new Date().toISOString().split('T')[0];
-  const schedule = JSON.parse(fs.readFileSync('schedule.json', 'utf8'));
+  let   schedule = JSON.parse(fs.readFileSync('schedule.json', 'utf8'));
   const entrada  = schedule.find(e => e.date === hoje && e.ativo !== false);
 
   if (!entrada) {
-    console.log(`📅 Nenhum story agendado para hoje (${hoje}).`);
-    process.exit(0);
+    console.log(`📅 Schedule esgotado. Regenerando para os próximos 30 dias...`);
+    schedule = await regenerarSchedule();
+    fs.writeFileSync('schedule.json', JSON.stringify(schedule, null, 2));
+    entrada = schedule.find(e => e.date === hoje && e.ativo !== false);
+    if (!entrada) {
+      console.log(`📅 Nenhum story agendado para hoje (${hoje}).`);
+      process.exit(0);
+    }
+    console.log(`✅ Schedule regenerado!\n`);
   }
 
   console.log(`\n📅 Data: ${hoje}`);
