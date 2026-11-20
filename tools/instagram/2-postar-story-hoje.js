@@ -83,24 +83,31 @@ function downloadFile(url, destPath) {
   });
 }
 
-// Upload para host público temporário (0x0.st)
+// Upload para catbox.moe (host público permanente, sem conta)
 function uploadToPublicHost(filePath) {
   return new Promise((resolve, reject) => {
     const fileData = fs.readFileSync(filePath);
     const filename  = path.basename(filePath);
     const boundary  = 'amf' + Date.now();
-    const header    = `--${boundary}\r\nContent-Disposition: form-data; name="file"; filename="${filename}"\r\nContent-Type: video/mp4\r\n\r\n`;
-    const footer    = `\r\n--${boundary}--\r\n`;
-    const body      = Buffer.concat([Buffer.from(header), fileData, Buffer.from(footer)]);
+
+    // Multipart: campo "reqtype" + campo "fileToUpload"
+    const part1 = Buffer.from(
+      `--${boundary}\r\nContent-Disposition: form-data; name="reqtype"\r\n\r\nfileupload\r\n`
+    );
+    const part2header = Buffer.from(
+      `--${boundary}\r\nContent-Disposition: form-data; name="fileToUpload"; filename="${filename}"\r\nContent-Type: video/mp4\r\n\r\n`
+    );
+    const part2footer = Buffer.from(`\r\n--${boundary}--\r\n`);
+    const body = Buffer.concat([part1, part2header, fileData, part2footer]);
 
     const options = {
-      hostname: '0x0.st',
-      path: '/',
+      hostname: 'catbox.moe',
+      path: '/user/api.php',
       method: 'POST',
       headers: {
         'Content-Type': `multipart/form-data; boundary=${boundary}`,
         'Content-Length': body.length,
-        'User-Agent': 'AMF-Estopas-AutoPost/1.0',
+        'User-Agent': 'AMF-Estopas/1.0',
       },
     };
 
@@ -109,7 +116,7 @@ function uploadToPublicHost(filePath) {
       res.on('data', c => data += c);
       res.on('end', () => {
         const url = data.trim();
-        if (url.startsWith('http')) resolve(url);
+        if (url.startsWith('https://')) resolve(url);
         else reject(new Error('Upload falhou: ' + url));
       });
     });
